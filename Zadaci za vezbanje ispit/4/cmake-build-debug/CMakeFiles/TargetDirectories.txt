@@ -1,0 +1,3 @@
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Zadaci za vezbanje ispit/4/cmake-build-debug/CMakeFiles/4.dir
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Zadaci za vezbanje ispit/4/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Zadaci za vezbanje ispit/4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
