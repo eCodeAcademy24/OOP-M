@@ -1,35 +1,35 @@
-
 #include<iostream>
 #include<string.h>
-
 using namespace std;
 
 //Дадена е класа Kurs во која се чуваат информации за име на курс (низа од знаци) и број на кредити (цел број).
-//
-// Дадена е класа Student што содржи инфомрации за: индекс на студентот (цел број), низа од оценки
-// на студентот (динамички алоцирана низа на оценките кои претставуваат броеви од 5 до 10) и број на оценки.
+
+// Дадена е класа Student што содржи инфомрации за: индекс на студентот (цел број),
+// низа од оценки на студентот (динамички алоцирана низа на оценките кои претставуваат броеви од 5 до 10) и број на оценки.
 //
 // Дадена е класа Predavach што содржи инфомрации за: име на предавачот (динамички алоцирана низа од знаци),
 // листа од курсеви кои ги предава предавачот (низа од објекти од класата Kurs) и број на курсеви (цел број).
 //
 // Да се креира класа Demonstrator, со која се претставуваат студентите држат лабораториските вежби на некои курсеви.
 // Објектите од оваа класа треба да содржат инфомрации за: индекс на студентот, оценки на студентот, број на оценки,
-// име на демонстраторот, листа од курсеви, број на курсеви чии лабораторисски вежби ги држи студентот и број на часови
-// во неделата кога студентот држи лабораториски вежби (цел број). (5 поени)
+// име на демонстраторот, листа од курсеви,
+// број на курсеви чии лабораторисски вежби ги држи студентот и број на часови во неделата кога студентот
+// држи лабораториски вежби (цел број). (5 поени)
 //
 // За секој студент да се овозможат следните функции:
 //
-// getBodovi() - која враќа цел број кој го претставува број на бодови за даден студент. Студентите кои не се демонстратори
-// имаат бодови кои го претставуваат процентот на преодни оценки на студентот. (На пример студент со оценки: 5 6 7
-// ќе има 66 бодови (цел дел од 66.666...) затоа што во 66% од оценките има оценка поголема од 5 ).
+// getBodovi() - која враќа цел број кој го претставува број на бодови за даден студент.
+// Студентите кои не се демонстратори имаат бодови кои го претставуваат процентот на преодни оценки на студентот.
+// (На пример студент со оценки: 5 6 7 ќе има 66 бодови (цел дел од 66.666...) затоа што во 66% од оценките има оценка поголема од 5 ).
 // Кај секој демонстратор на овие бодовите од оценките се додаваат бодовите од лабораториските вежби: (20*C)/N,
 // каде N e бројот на курсеви кои ги држи, C бројот на часови во неделата кога студентот држи лабораториски вежби.
 // Во случај кога некој демонстратор не држи ниту еден курс се фрла исклучокот NoCourseException.
 // Справување со исклучокот треба да реализира онаму каде што е потребно и притоа да се испечати соодветна порака
 // за грешка "Demonstratorot so indeks XXXX ne drzi laboratoriski vezbi", каде XXXX е индексот на демонстраторот. (15 поени)
 //
-// pecati()- во која се печати само индексот на студентот ако студентот не е демонстратор, а во случај кога студентот
-// е демонстратор во продолжение се печатат информации за курсевите чии лабораториски вежби ги држи демонстраторот. (10 поени)
+// pecati()- во која се печати само индексот на студентот ако студентот не е демонстратор,
+// а во случај кога студентот е демонстратор во продолжение се печатат информации за курсевите
+// чии лабораториски вежби ги држи демонстраторот. (10 поени)
 //
 // Форматот за печатење е:
 //
@@ -38,16 +38,25 @@ using namespace std;
 //
 // Student& vratiNajdobroRangiran(Student ** studenti, int n ) што враќа референца кон студентот кој има најмногу бодови од листата на дадените n студенти (studenti). Да забележиме дека оние демонстратори кои не држат лабораториски вежби ќе земеме дека имаат 0 бодови. Да забележиме и дека во примерите секогаш има точно еден студент кој има најголем број на бодови. (15 поени)
 // void pecatiDemonstratoriKurs (char* kurs, Student** studenti, int n) - која од дадена листа на студенти, ќе ги испечати само оние кои држат лабораториски вежби на курсот kurs. (10 поени)
-// Комплетна функционалност на програмата. (5 поени)
+// Комплетна функционалност на програмата
+// .
+// (
+// 5
+// поени
+// )
 //
-// Да забележиме дека веќе постоечките класи Kurs, Student и Predavach може да се дополнуваат и менуваат. Погледнете ги дадените класи. Во нив покрај конструкторите дадени се и други функциите кои можат да се користат.
-//
-// For example:
+// Да забележиме дека веќе постоечките класи Kurs, Student и Predavach може да се дополнуваат и менуваат
+// .
+//  Погледнете ги дадените класи
+// .
+//  Во нив покрај конструкторите дадени се и други функциите кои можат да се користат
+// .
 
 class Kurs {
 private:
     char ime[20];
     int krediti;
+
 public:
     Kurs(char *ime, int krediti) {
         strcpy(this->ime, ime);
@@ -97,25 +106,30 @@ public:
         if (&k == this) return *this;
         this->indeks = k.indeks;
         this->brojOcenki = k.brojOcenki;
-        delete[] ocenki;
+        delete [] ocenki;
         this->ocenki = new int[k.brojOcenki];
         for (int i = 0; i < k.brojOcenki; i++) this->ocenki[i] = k.ocenki[i];
         return *this;
     }
 
-    ~Student() { delete[] ocenki; }
+    ~Student() { delete [] ocenki; }
 
     //dopolni ja klasata
+    // getBodovi() - која враќа цел број кој го претставува број на бодови за даден студент.
+    // Студентите кои не се демонстратори имаат бодови кои го претставуваат процентот на преодни оценки на студентот.
+    // (На пример студент со оценки: 5 6 7 ќе има 66 бодови (цел дел од 66.666...) затоа што во 66% од оценките има оценка поголема од 5 ).
     virtual int getBodovi() {
-        int brojac = 0;
-        for (int i = 0; i < brojOcenki; ++i) {
+        int counter = 0;
+        for (int i = 0; i < brojOcenki; i++) {
             if (ocenki[i] > 5) {
-                brojac++;
+                ++counter;
             }
         }
-        return (brojac * 100) / brojOcenki;
+
+        return (counter * 100) / brojOcenki;
     }
 
+    // pecati()- во која се печати само индексот на студентот ако студентот не е демонстратор
     virtual void pecati() {
         cout << indeks;
     }
@@ -149,12 +163,12 @@ public:
         this->brojKursevi = p.brojKursevi;
         for (int i = 0; i < p.brojKursevi; i++) this->kursevi[i] = p.kursevi[i];
         this->imeIPrezime = new char[strlen(p.imeIPrezime) + 1];
-        delete[] imeIPrezime;
+        delete [] imeIPrezime;
         strcpy(this->imeIPrezime, p.imeIPrezime);
         return *this;
     }
 
-    ~Predavach() { delete[] imeIPrezime; }
+    ~Predavach() { delete [] imeIPrezime; }
 
     int getBrojKursevi() const { return brojKursevi; }
 
@@ -163,55 +177,66 @@ public:
     Kurs operator[](int i) const {
         if (i < brojKursevi && i >= 0)
             return kursevi[i];
-        else return Kurs();
+        return Kurs();
     }
 
     void pecati() const {
         cout << imeIPrezime << " (";
         for (int i = 0; i < brojKursevi; i++) {
             kursevi[i].pecati();
-            if (i < brojKursevi - 1) cout << ", "; else cout << ")";
+            if (i < brojKursevi - 1) cout << ", ";
+            else cout << ")";
         }
     }
 };
 
 
-//mesto za vashiot kod
 class NoCourseException {
 private:
     int indeks;
+
 public:
     NoCourseException(int indeks) {
         this->indeks = indeks;
     }
 
-    void print() {
+    void message() {
         cout << "Demonstratorot so indeks " << indeks << " ne drzi laboratoriski vezbi" << endl;
     }
-
 };
 
 class Demonstrator : public Student, public Predavach {
 private:
-    int broj_na_casovi;
+    int brojNaChasovi;
+
 public:
-    Demonstrator(int indeks, int *ocenki, int brojOcenki, char *imeIPrezime, Kurs *kursevi, int brojKursevi,
-                 int brojNaChasovi) :
-            Student(indeks, ocenki, brojOcenki), Predavach(imeIPrezime, kursevi, brojKursevi) {
-        this->broj_na_casovi = brojNaChasovi;
+    Demonstrator(int indeks, int *ocenki, int brOcenki, char *imeIPrezime, Kurs *kursevi, int brojKursevi,
+                 int brojNaChasovi)
+        : Student(indeks, ocenki, brOcenki), Predavach(imeIPrezime, kursevi, brojKursevi) {
+        this->brojNaChasovi = brojNaChasovi;
     }
 
+    // Кај секој демонстратор на овие бодовите од оценките се додаваат бодовите од лабораториските вежби: (20*C)/N,
+    // каде N e бројот на курсеви кои ги држи, C бројот на часови во неделата кога студентот држи лабораториски вежби.
+    // Во случај кога некој демонстратор не држи ниту еден курс се фрла исклучокот NoCourseException.
+    // Справување со исклучокот треба да реализира онаму каде што е потребно и притоа да се испечати соодветна порака
+    // за грешка "Demonstratorot so indeks XXXX ne drzi laboratoriski vezbi", каде XXXX е индексот на демонстраторот. (15 поени)
     int getBodovi() {
-        double osnovniBodovi = Student::getBodovi();
+        int osnovniBodovi = Student::getBodovi();
         if (getBrojKursevi() == 0) {
             throw NoCourseException(indeks);
         }
-        return osnovniBodovi + (20 * broj_na_casovi) / getBrojKursevi();
+        return osnovniBodovi + (20 * brojNaChasovi) / getBrojKursevi();
     }
 
+    // pecati()- во која се печати само индексот на студентот ако студентот не е демонстратор,
+    // а во случај кога студентот е демонстратор во продолжение се печатат информации за курсевите
+    // чии лабораториски вежби ги држи демонстраторот. (10 поени)
+    //55555: B.Boskovska (OOP 6ECTS, Angliski 2ECTS, DMatematika 6ECTS)
+    // 44444: V.Velkovski (Informatika 3ECTS, OOP 6ECTS, Angliski 2ECTS)
     void pecati() {
         Student::pecati();
-        cout << ": " << getImeIPrezime() << " (";
+        cout << ": " << imeIPrezime << " (";
         for (int i = 0; i < getBrojKursevi(); i++) {
             operator[](i).pecati();
             if (i < getBrojKursevi() - 1) cout << ", ";
@@ -220,29 +245,41 @@ public:
     }
 };
 
+//mesto za vashiot kod
+// Student& vratiNajdobroRangiran(Student ** studenti, int n ) што враќа референца кон студентот кој има најмногу бодови од листата
+// на дадените n студенти (studenti). Да забележиме дека оние демонстратори кои не држат лабораториски вежби ќе
+// земеме дека имаат 0 бодови. Да забележиме и дека во примерите секогаш има точно еден студент кој има најголем број на бодови.
+// (15 поени)
 Student &vratiNajdobroRangiran(Student **studenti, int n) {
-    int maxBodovi = -1;
     Student *najdobarStudent = studenti[0];
-    int indeks = 0;
+    int maxBodovi = -1;
+
     for (int i = 1; i < n; i++) {
         int bodovi = 0;
+
         try {
             bodovi = studenti[i]->getBodovi();
-        } catch (NoCourseException &e) {
-            e.print();
+        } catch (NoCourseException &nce) {
+            nce.message();
         }
+
         if (bodovi > maxBodovi) {
             maxBodovi = bodovi;
             najdobarStudent = studenti[i];
         }
     }
+
     return *najdobarStudent;
 }
 
+// void pecatiDemonstratoriKurs (char* kurs, Student** studenti, int n) - која од дадена листа на студенти,
+// ќе ги испечати само оние кои држат лабораториски вежби на курсот kurs. (10 поени)
+// Комплетна функционалност на програмата
+// .
 void pecatiDemonstratoriKurs(char *kurs, Student **studenti, int n) {
     for (int i = 0; i < n; i++) {
         Demonstrator *d = dynamic_cast<Demonstrator *>(studenti[i]);
-        if (d != nullptr) {
+        if (d) {
             for (int j = 0; j < d->getBrojKursevi(); j++) {
                 if (d->operator[](j) == kurs) {
                     d->pecati();
@@ -255,7 +292,6 @@ void pecatiDemonstratoriKurs(char *kurs, Student **studenti, int n) {
 }
 
 int main() {
-
     Kurs kursevi[10];
     int indeks, brojKursevi, ocenki[20], ocenka, brojOcenki, tip, brojCasovi, krediti;
     char ime[20], imeIPrezime[50];
@@ -279,7 +315,6 @@ int main() {
 
         Demonstrator d(indeks, ocenki, brojOcenki, imeIPrezime, kursevi, brojKursevi, brojCasovi);
         cout << "Objekt od klasata Demonstrator e kreiran";
-
     } else if (tip == 2) //funkcija pecati vo Student
     {
         cout << "-----TEST pecati-----" << endl;
@@ -291,7 +326,6 @@ int main() {
 
         Student s(indeks, ocenki, brojOcenki);
         s.pecati();
-
     } else if (tip == 3) //funkcija getVkupnaOcenka vo Student
     {
         cout << "-----TEST getVkupnaOcenka-----" << endl;
@@ -302,7 +336,6 @@ int main() {
         }
         Student s(indeks, ocenki, brojOcenki);
         cout << "Broj na bodovi: " << s.getBodovi() << endl;
-
     } else if (tip == 4) //funkcija getVkupnaOcenka vo Demonstrator
     {
         cout << "-----TEST getVkupnaOcenka-----" << endl;
@@ -320,8 +353,6 @@ int main() {
 
         Demonstrator d(indeks, ocenki, brojOcenki, imeIPrezime, kursevi, brojKursevi, brojCasovi);
         cout << "Broj na bodovi: " << d.getBodovi() << endl;
-
-
     } else if (tip == 5) //funkcija pecati vo Demonstrator
     {
         cout << "-----TEST pecati -----" << endl;
@@ -339,7 +370,6 @@ int main() {
 
         Demonstrator d(indeks, ocenki, brojOcenki, imeIPrezime, kursevi, brojKursevi, brojCasovi);
         d.pecati();
-
     } else if (tip == 6) //site klasi
     {
         cout << "-----TEST Student i Demonstrator-----" << endl;
@@ -359,8 +389,6 @@ int main() {
         s->pecati();
         cout << "\nBroj na bodovi: " << s->getBodovi() << endl;
         delete s;
-
-
     } else if (tip == 7) //funkcija vratiNajdobroRangiran
     {
         cout << "-----TEST vratiNajdobroRangiran-----" << endl;
@@ -393,7 +421,7 @@ int main() {
         najdobar.pecati();
 
         for (int j = 0; j < k; j++) delete studenti[j];
-        delete[] studenti;
+        delete [] studenti;
     } else if (tip == 8) //funkcija pecatiDemonstratoriKurs
     {
         cout << "-----TEST pecatiDemonstratoriKurs-----" << endl;
@@ -425,8 +453,7 @@ int main() {
         cout << "Demonstratori na " << kurs << " se:" << endl;
         pecatiDemonstratoriKurs(kurs, studenti, k);
         for (int j = 0; j < k; j++) delete studenti[j];
-        delete[] studenti;
-
+        delete [] studenti;
     }
 
 

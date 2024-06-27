@@ -1,0 +1,3 @@
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Datoteki/datoteki/book/cmake-build-debug/CMakeFiles/book.dir
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Datoteki/datoteki/book/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/User/Desktop/Predrag/PrivatniChasovi/OOP-M/Datoteki/datoteki/book/cmake-build-debug/CMakeFiles/rebuild_cache.dir
